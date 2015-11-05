@@ -1,17 +1,12 @@
 require './boot'
 
-token = ENV['BOT_TOKEN']
-puts '>> Starting the bot loop'
-
-Telegram::Bot::Client.run(token) do |bot|
+Telegram::Bot::Client.run(BOT_TOKEN) do |bot|
   bot.listen do |message|
     case message.text
     when '/start'
-      question = "Hi, #{message.from.first_name}! How was your walk today?"
-      answers =
-        Telegram::Bot::Types::ReplyKeyboardMarkup
-        .new(keyboard: [['Go to my profile'], ['Awesome!', 'So-so...'], ['Send a tip']])
-      bot.api.send_message(chat_id: message.chat.id, text: question, reply_markup: answers)
+      service = StartMessagePub.new
+      service.subscribe(WelcomeSub.new)
+      service.call(message)
     when '/stop'
       kb = Telegram::Bot::Types::ReplyKeyboardHide.new(hide_keyboard: true)
       bot.api.send_message(chat_id: message.chat.id,

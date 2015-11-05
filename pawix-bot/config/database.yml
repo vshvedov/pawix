@@ -3,7 +3,7 @@ connection: &connection
   min_messages: WARNING  # Silences PostgreSQL NOTICE messages
   encoding: unicode
   pool: 5
-  username: deploy
+  username: postgres
   password: deploy
   host: 127.0.0.1
 
@@ -13,7 +13,7 @@ development:
 
 production:
   <<: *connection
-  database: pawix_bot_development
+  database: pawix_bot_production
 
 test: &test
   <<: *connection
