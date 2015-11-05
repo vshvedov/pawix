@@ -1,0 +1,12 @@
+db:
+  image: postgres
+  ports:
+    - "5432"
+bot:
+  build: ./pawix-bot
+  command: ruby app.rb
+  volumes:
+    - ./pawix-bot:/pawix-bot
+  env_file: .env
+  links:
+   - db

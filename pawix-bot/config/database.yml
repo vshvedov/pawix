@@ -1,0 +1,20 @@
+connection: &connection
+  adapter: postgresql
+  min_messages: WARNING  # Silences PostgreSQL NOTICE messages
+  encoding: unicode
+  pool: 5
+  username: deploy
+  password: deploy
+  host: 127.0.0.1
+
+development:
+  <<: *connection
+  database: pawix_bot_development
+
+production:
+  <<: *connection
+  database: pawix_bot_development
+
+test: &test
+  <<: *connection
+  database: pawix_bot_test
