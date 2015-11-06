@@ -15,9 +15,9 @@ test: &test
   <<: *connection
   database: pawix_test
 
-production: &test
+production:
   <<: *connection
   database: pawix_production
-  host: $DB_HOST
-  username: $DB_USERNAME
-  password: $DB_PASSWORD
+  host: <%= ENV['DB_HOST'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
