@@ -17,8 +17,17 @@ Telegram::Bot::Client.run(BOT_TOKEN) do |bot|
       bot.api.send_message(chat_id: message.chat.id,
                            text: 'Your profile is available at http://pawix.com/users/1')
     when KBD_SHORT
+      service = WalkMessagePub.new
+      service.subscribe(UserActionsSub.new)
+      service.call(message)
     when KBD_REG
+      service = WalkMessagePub.new
+      service.subscribe(UserActionsSub.new)
+      service.call(message)
     when KBD_LONG
+      service = WalkMessagePub.new
+      service.subscribe(UserActionsSub.new)
+      service.call(message)
     end
   end
 end

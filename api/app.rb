@@ -36,6 +36,17 @@ class App < Sinatra::Base
   end
 
   post '/walk' do
+    request.body.rewind
+    payload = JSON.parse(request.body.read)
+    user = User.find_by_telegram_id(payload['telegram_id'])
+    user.walks.create!(duration: payload['duration'])
+
+    res = {
+      text: '❤️ Amazing! ❤️',
+      total_walks: user.walks.count
+    }
+
+    res.to_json
   end
 
   post '/walks' do

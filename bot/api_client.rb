@@ -14,4 +14,13 @@ class ApiClient
 
     @connection.post('/user', payload.to_json)
   end
+
+  def walk_event(telegram_id, duration)
+    payload = {
+      telegram_id: telegram_id,
+      duration: duration
+    }
+
+    @connection.post('/walk', payload.to_json)
+  end
 end
