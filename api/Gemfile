@@ -1,0 +1,8 @@
+source 'http://rubygems.org'
+
+gem 'pg'
+gem 'sinatra'
+gem 'rack'
+gem 'rake'
+gem 'sinatra-activerecord'
+gem 'sinatra-contrib'

@@ -1,7 +1,5 @@
 source 'http://rubygems.org'
 
-gem 'grape'
 gem 'telegram-bot-ruby'
-gem 'pg'
-gem 'activerecord'
 gem 'wisper', '2.0.0.rc1'
+gem 'faraday'

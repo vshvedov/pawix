@@ -1,0 +1,23 @@
+connection: &connection
+  adapter: postgresql
+  min_messages: WARNING
+  encoding: unicode
+  pool: 5
+  username: postgres
+  password:
+  host: db
+
+development:
+  <<: *connection
+  database: pawix_development
+
+test: &test
+  <<: *connection
+  database: pawix_test
+
+production: &test
+  <<: *connection
+  database: pawix_production
+  host: $DB_HOST
+  username: $DB_USERNAME
+  password: $DB_PASSWORD
