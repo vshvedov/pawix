@@ -1,0 +1,5 @@
+KBD_SHORT = '🐥 Short'
+KBD_REG = '🐶 Regular'
+KBD_LONG = '💪 Long'
+KBD_PROFILE = '🐾 My profile'
+KDB_PROG = '📆 Calendar'

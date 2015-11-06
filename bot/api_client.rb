@@ -1,0 +1,17 @@
+class ApiClient
+  def initialize
+    @connection ||= Faraday.new(url: 'http://api:9292') do |faraday|
+      faraday.response(:logger)
+      faraday.adapter(Faraday.default_adapter)
+    end
+  end
+
+  def start_msg(telegram_id, first_name)
+    payload = {
+      telegram_id: telegram_id,
+      first_name: first_name
+    }
+
+    @connection.post('/user', payload.to_json)
+  end
+end
