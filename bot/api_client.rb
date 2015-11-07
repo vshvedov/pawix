@@ -1,6 +1,6 @@
 class ApiClient
   def initialize
-    @connection ||= Faraday.new(url: 'http://api:9292') do |faraday|
+    @connection ||= Faraday.new(url: 'http://pawix_api:9292') do |faraday|
       faraday.response(:logger)
       faraday.adapter(Faraday.default_adapter)
     end

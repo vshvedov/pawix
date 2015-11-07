@@ -39,12 +39,18 @@ class App < Sinatra::Base
     request.body.rewind
     payload = JSON.parse(request.body.read)
     user = User.find_by_telegram_id(payload['telegram_id'])
-    user.walks.create!(duration: payload['duration'])
 
-    res = {
-      text: '❤️ Amazing! ❤️',
-      total_walks: user.walks.count
-    }
+    if user
+      user.walks.create!(duration: payload['duration'])
+      res = {
+        text: '❤️ Amazing! ❤️',
+        total_walks: user.walks.count
+      }
+    else
+      res = {
+        text: 'You have to register first. Type /start and repeat!'
+      }
+    end
 
     res.to_json
   end
